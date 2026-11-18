@@ -4,13 +4,19 @@ Computer Networks lab programs: Part A (C++) and Part B (NS2), with a menu scrip
 
 ## Quick start: get the program menu
 
-Run this in any folder. It downloads `cnlab.sh` into that folder and opens the menu:
+Run this in any folder. It saves `cnlab.sh` into that folder and opens the menu:
 
 ```bash
-curl -sL is.gd/uvcecn -o cnlab.sh && bash cnlab.sh
+curl -sL is.gd/uvcelab|sh
 ```
 
-(`is.gd/uvcecn` is a short link to the full URL below.)
+(`is.gd/uvcelab` points to `get.sh` in this repo, which downloads `cnlab.sh` and runs it.)
+
+Only download `cnlab.sh`, without opening the menu:
+
+```bash
+curl -sL is.gd/uvcecn -o cnlab.sh
+```
 
 Full URL version:
 
