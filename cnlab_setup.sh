@@ -9,13 +9,10 @@ if grep -qi ubuntu /etc/os-release; then
 fi
 sudo apt-get install -y build-essential ns2 nam gnuplot gawk tcl8.6 tk8.6
 
-# NAM fix (Tcl/Tk 8.6.14+ on new Ubuntu/Kali): see namfix.sh
-sudo grep -rlZ "source -encoding utf-8" /usr/share/tcltk /usr/lib/tcltk 2>/dev/null | sudo xargs -0 -r sed -i 's/source -encoding utf-8 /source /g'
-for LIB in $(find /usr/lib -name "libtclcl.so*" -type f 2>/dev/null); do sudo perl -pi -e 's/source -encoding utf-8 /source                 /g' "$LIB"; done
-TTK=/usr/share/tcltk/tk8.6/ttk/ttk.tcl
-if [ -f "$TTK" ] && ! grep -q "cnlab-namfix" "$TTK"; then
-    sudo sed -i '1i if {[info exists ::ttk::__loaded]} return ;# cnlab-namfix\nset ::ttk::__loaded 1 ;# cnlab-namfix' "$TTK"
-fi
+# NAM fix for new Tk (8.6.14+): stop tclcl replacing "source", and skip its second ttk.tcl load
+LIB=$(readlink -f /usr/lib/x86_64-linux-gnu/libtclcl.so.1 2>/dev/null || true)
+[ -f "$LIB" ] || LIB=$(find /usr/lib -name 'libtclcl.so*' -type f 2>/dev/null | head -1)
+[ -f "$LIB" ] && sudo perl -pi -e 's/^rename source source\.orig$/#ename source source.orig/; s/^proc source \{fileName\} \{$/proc sourcX {fileName} {/; s/^if \{\$::ttk::library ne ""\} \{$/if {\$::ttk::library eq ""} {/' "$LIB"
 
 mkdir -p ~/cnlab/partA ~/cnlab/partB
 cd ~/cnlab/partA
