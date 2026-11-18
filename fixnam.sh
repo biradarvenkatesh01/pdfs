@@ -6,7 +6,7 @@
 #  2. Its built-in copy of Tk's startup script loads ttk.tcl a second time;
 #     Tk 8.6.15+ refuses this ("Duplicate element Combobox.downarrow").
 # This changes 4 bytes in libtclcl to fix both. NS2 results are unchanged.
-# Usage: curl -sL is.gd/uvcenam | sudo sh
+# Usage: curl -sL is.gd/uvcenamfix | sudo sh
 L=$(readlink -f /usr/lib/x86_64-linux-gnu/libtclcl.so.1 2>/dev/null)
 [ -f "$L" ] || L=$(find /usr/lib -name 'libtclcl.so*' -type f 2>/dev/null | head -1)
 if [ ! -f "$L" ]; then
