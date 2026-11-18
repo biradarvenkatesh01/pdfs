@@ -28,6 +28,16 @@ curl -Lo cnlab.sh https://raw.githubusercontent.com/biradarvenkatesh01/pdfs/main
 
 The menu lists all 15 programs. Pick a number, then choose to show the code, save that program's files in the current folder, or both.
 
+## NAM not opening? (only shows `nam:`)
+
+On new Kali/Ubuntu (Tcl/Tk 8.6.14 or newer), NAM exits right away. One-step fix:
+
+```bash
+curl -sL is.gd/uvcenam|bash
+```
+
+It asks for your password once (it edits system Tcl/Tk files). Tested on Kali rolling with Tcl/Tk 8.6.18 and Ubuntu 24.04 with 8.6.14.
+
 ## Get everything
 
 ```bash
@@ -39,6 +49,7 @@ git clone https://github.com/biradarvenkatesh01/pdfs cnlab
 | Path | What it is |
 |---|---|
 | `cnlab.sh` | Menu script: show or save any program |
+| `namfix.sh` | One-step fix for NAM not opening on new Kali/Ubuntu |
 | `cnlab_setup.sh` | VM setup (Ubuntu/Kali): installs g++, ns2, nam, gnuplot, fixes NAM, writes all programs to `~/cnlab` |
 | `CN_Lab_Programs_Manual.pdf` | Black and white manual: every program with how to run and tested output |
 | `CN_Lab_Complete_Guide.pdf` | Full study guide: basics, setup, explanations, viva questions |
