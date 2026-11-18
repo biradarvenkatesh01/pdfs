@@ -2,32 +2,28 @@
 
 Computer Networks lab programs: Part A (C++) and Part B (NS2), with a menu script, a printable manual and a study guide.
 
-## Quick start: get the program menu
+## Quick start
 
-Run this in any folder. It saves `cnlab.sh` into that folder and opens the menu:
+**Save `cnlab.sh` and open the menu:**
 
 ```bash
-curl -sL is.gd/uvcelab|sh
+curl -sL is.gd/uvcerun|sh
 ```
 
-(`is.gd/uvcelab` points to `get.sh` in this repo, which downloads `cnlab.sh` and runs it.)
-
-Only download `cnlab.sh`, without opening the menu:
+**Only download `cnlab.sh`** (works on Linux, macOS and Windows; in Windows PowerShell type `curl.exe`):
 
 ```bash
-curl -sL is.gd/uvcecn -o cnlab.sh
+curl -Lo cnlab.sh is.gd/uvcenet
 ```
 
-Full URL version:
+Then run the menu with `bash cnlab.sh`.
+
+Both short links go through the jsDelivr mirror, so they work even on networks (some Indian ISPs) that block `raw.githubusercontent.com`.
+
+Direct GitHub URL, if your network allows it:
 
 ```bash
-curl -sLO https://raw.githubusercontent.com/biradarvenkatesh01/pdfs/main/cnlab.sh && bash cnlab.sh
-```
-
-If `curl` is not installed, use `wget`:
-
-```bash
-wget -q https://raw.githubusercontent.com/biradarvenkatesh01/pdfs/main/cnlab.sh && bash cnlab.sh
+curl -Lo cnlab.sh https://raw.githubusercontent.com/biradarvenkatesh01/pdfs/main/cnlab.sh
 ```
 
 The menu lists all 15 programs. Pick a number, then choose to show the code, save that program's files in the current folder, or both.
